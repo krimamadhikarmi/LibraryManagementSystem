@@ -7,9 +7,9 @@
             <th class="border px-4 py-2">Delete</th>
         </tr>
     </thead>
-    @foreach ($category as $categories)
+    @foreach ($category as $index => $categories)
         <tr class="border-t hover:bg-gray-50">
-            <td class="border px-6 py-2">{{ $categories->id }}</td>
+            <td class="border px-6 py-2">{{ $index + 1 }}</td>
             <td class="border px-6  py-2">{{ $categories->category_name }}</td>
             <td class="px-6 py-4 space-x-2">
                 <a class="text-blue-500 hover:underline"

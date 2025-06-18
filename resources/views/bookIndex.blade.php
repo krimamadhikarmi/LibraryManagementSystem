@@ -40,9 +40,9 @@
                         <th class="border px-4 py-2">Delete</th>
                     </tr>
                 </thead>
-                @foreach ($books as $book)
+                @foreach ($books as $index => $book)
                     <tr class="border-t hover:bg-gray-50">
-                        <td class="border px-6 py-2">{{ $book->id }}</td>
+                        <td class="border px-6 py-2">{{ $index + 1 }}</td>
                         <td class="border px-6 py-2">{{ $book->title }}</td>
                         <td class="border px-6 py-2">{{ $book->author_name }}</td>
                         <td class="border px-6 py-2">{{ $book->price }}</td>

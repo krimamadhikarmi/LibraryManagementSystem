@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Borrow;
 use App\Models\Category;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -48,5 +50,27 @@ class BookController extends Controller
     {
         $book->delete();
         return redirect(route('book.store'))->with('success', 'Book deleted');
+    }
+
+    public function book_borrow($id)
+    {
+        $book_data = Book::find($id);
+        $book_id = $id;
+        $quantity = $book_data->quantity;
+        if ($quantity >= 1) {
+            if (Auth::id()) {
+                $user_id = Auth::user()->id;
+                $borrow = new Borrow;
+                $borrow->book_id = $book_id;
+                $borrow->user_id = $user_id;
+                $borrow->status = 'Applied';
+                $borrow->save();
+                return redirect()->back()->with('message', 'Book Request is sent !!!!');
+            } else {
+                return redirect()->back()->with('message', 'Unauthorized');
+            }
+        } else {
+            return redirect()->back()->with('message', 'Book Not Available');
+        }
     }
 }

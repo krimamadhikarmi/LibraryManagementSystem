@@ -19,9 +19,20 @@
         <li><a href="#" class="text-blue-500 font-semibold">Home</a></li>
         <li><a href="#" class="hover:text-blue-500">List</a></li>
         <li><a href="#" class="hover:text-blue-500">Author</a></li>
-        <li><a href="#" class="hover:text-blue-500">Log Out</a></li>
-        {{-- @include('home.book') --}}
+        <li>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="hover:text-blue-500 bg-transparent border-none p-0 cursor-pointer">
+                    Log Out
+                </button>
+            </form>
+        </li>
+
+
     </x-header>
+    @include('home.category')
+    @include('home.book')
+
 </body>
 
 </html>
