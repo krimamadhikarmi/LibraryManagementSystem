@@ -5,35 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite('resources/css/app.css')
-    <title>Document</title>
+    @vite(entrypoints: 'resources/css/app.css')
+    <title>Admin Panel - Category</title>
 </head>
 
-<body>
-    <x-header>
-        <x-slot:title>Admin</x-slot:title>
-        <li><a href="#" class="text-blue-500 font-semibold">Home</a></li>
-        <li><a href="#" class="hover:text-blue-500">List</a></li>
-        <li><a href="#" class="hover:text-blue-500">Author</a></li>
-        <li><a href="#" class="hover:text-blue-500">Log Out</a></li>
-    </x-header>
+<body class="bg-gray-50 font-sans text-gray-800">
 
-    <div class="m-12">
-        <h1 class="font-bold text-xl m-12">Category</h1>
+    <x-adminHeader />
+
+    <main class="max-w-4xl mx-auto mt-12 px-6 mb-12">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-700">Category Management</h1>
+
         @if (session()->has('success'))
-            <div class="text-red-500">
-                {{ session()->get('success') }}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">
+                <span class="font-semibold">Success:</span> {{ session()->get('success') }}
             </div>
         @endif
-        <form method="POST" action="{{ route('category.store') }}">
+
+        <!-- Form Section -->
+        <form method="POST" action="{{ route('category.store') }}" class="bg-white shadow-md rounded-lg p-6 mb-10">
             @csrf
-            <label>Category Name</label>
-            <input type="text" name="category_name" placeholder="Enter the category..."
-                class="border-black rounded-sm" />
-            <input type="submit" name="Submit" class="bg-sky-400 p-2 rounded-lg" />
+            <div class="mb-4">
+                <label for="category_name" class="block text-sm font-medium text-gray-700 mb-1">Category Name</label>
+                <input type="text" id="category_name" name="category_name" placeholder="Enter the category..."
+                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+            </div>
+            <button type="submit"
+                class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                Submit
+            </button>
         </form>
+
+        <!-- Category Table Include -->
         @include('category.categoryTable')
-    </div>
+    </main>
+
 </body>
 
 </html>

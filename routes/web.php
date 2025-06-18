@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminHome;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Models\Category;
@@ -11,7 +12,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index']);
-Route::get('/adminhome', [AdminHome::class, 'home']);
+Route::get('/adminhome', [AdminHome::class, 'home'])->name('adminHome');
 //category
 Route::get('/category_add', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/category_add', [CategoryController::class, 'store'])->name('category.store');
@@ -19,3 +20,8 @@ Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->na
 Route::put('/category/{category}/update', [CategoryController::class, 'update'])->name('category.update');
 
 Route::delete('/category/{category}/delete', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+//books
+Route::get('/book', [BookController::class, 'index'])->name('book.index');
+Route::post('/book', [BookController::class, 'store'])->name('book.store');
+Route::get('/book_create', [BookController::class, 'create'])->name('book.create');

@@ -39,9 +39,7 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'category_name' => 'required',
-
         ]);
-
         $category->update($data);
         return redirect(route('category.store'))->with('success', 'Category Updated');
     }

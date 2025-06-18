@@ -13,7 +13,7 @@
     <x-header>
         <x-slot:title>Admin</x-slot:title>
         <li><a href="#" class="text-blue-500 font-semibold">Home</a></li>
-        <li><a href="#" class="hover:text-blue-500">List</a></li>
+        <li><a href="category_add" class="hover:text-blue-500">    </a></li>
         <li><a href="#" class="hover:text-blue-500">Author</a></li>
         <li><a href="#" class="hover:text-blue-500">Log Out</a></li>
     </x-header>
