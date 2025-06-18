@@ -8,7 +8,6 @@
     @vite('resources/css/app.css')
     <title>Library App</title>
 
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 </head>
 
 <body class="antialiased bg-gray-100">
@@ -21,6 +20,7 @@
         <li><a href="#" class="hover:text-blue-500">List</a></li>
         <li><a href="#" class="hover:text-blue-500">Author</a></li>
         <li><a href="#" class="hover:text-blue-500">Log Out</a></li>
+        {{-- @include('home.book') --}}
     </x-header>
 </body>
 
