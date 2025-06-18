@@ -25,3 +25,4 @@ Route::delete('/category/{category}/delete', [CategoryController::class, 'destro
 Route::get('/book', [BookController::class, 'index'])->name('book.index');
 Route::post('/book', [BookController::class, 'store'])->name('book.store');
 Route::get('/book_create', [BookController::class, 'create'])->name('book.create');
+Route::delete('/book/{book}/delete', [BookController::class, 'destroy'])->name('book.destroy');

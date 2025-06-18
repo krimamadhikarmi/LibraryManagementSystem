@@ -20,6 +20,11 @@
             href="{{ route('book.create') }}"> Add
             Book</a>
 
+        @if (session()->has('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 mt-6" role="alert">
+                <span class="font-semibold">Success:</span> {{ session()->get('success') }}
+            </div>
+        @endif
         <div class="mt-12">
             <table class="min-w-full bg-white shadow-md  overflow-hidden">
                 <thead class="bg-gray-100 text-gray-700 text-left">
@@ -49,7 +54,8 @@
                             <a class="text-blue-500 hover:underline">Edit</a>
                         </td>
                         <td class="border px-4 py-2">
-                            <form method="post" action=" "class="inline-block"
+                            <form method="post"
+                                action="{{ route('book.destroy', ['book' => $book]) }} "class="inline-block"
                                 onsubmit="return confirm('Are you sure you want to delete this category?');">
                                 @csrf
                                 @method('delete')

@@ -43,4 +43,10 @@ class BookController extends Controller
 
         return redirect()->route('book.index')->with('success', 'Book created successfully');
     }
+
+    public function destroy(Book $book)
+    {
+        $book->delete();
+        return redirect(route('book.store'))->with('success', 'Book deleted');
+    }
 }

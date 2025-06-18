@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    {{ dd($category) }}
+
     <table class="border border-black w-full mt-8">
         <tr class="bg-gray-100">
             <th class="border px-4 py-2">ID</th>
