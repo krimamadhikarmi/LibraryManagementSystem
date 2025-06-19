@@ -24,6 +24,7 @@ Route::match(['GET', 'POST'], '/logout', [AuthController::class, 'logout'])->nam
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('userHome');
     Route::get('/book_borrow/{book}', [BookController::class, 'book_borrow'])->name('book.borrow');
+    Route::get('bookhistory', [HomeController::class, 'history'])->name('book.history');
 });
 
 // Routes for admins

@@ -18,7 +18,7 @@
         </x-slot:title>
         <li><a href="#" class="text-blue-500 font-semibold">Home</a></li>
         <li><a href="#" class="hover:text-blue-500">List</a></li>
-        <li><a href="#" class="hover:text-blue-500">Author</a></li>
+        <li><a href="{{route('book.history')}}" class="hover:text-blue-500">My History</a></li>
         <li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

@@ -34,14 +34,16 @@
                             <h6 class="font-medium">{{ $book->author_name }}</h6>
                         </div>
                         <div class="border-t mt-4 pt-4 flex justify-between">
-                            <div>
-                                <p class="text-sm text-gray-600">Current Available</p>
-                                <strong class="text-lg">{{ $book->quantity }}</strong>
-                            </div>
+                            
+                                <div>
+                                    <p class="text-gray-500">Available Quantity</p>
+                                    <strong class="text-lg text-green-600">{{ $book->quantity }}</strong>
+                                </div>
+                            
 
                         </div>
-                        <a href="" class="mt-4 inline-block text-blue-500 hover:underline">View Item
-                            Details</a>
+                        <a href="" class="mt-4 inline-block text-blue-500 hover:underline">Book
+                            Details ></a>
                         <div>
                             <a href="{{ route('book.borrow', $book->id) }}"
                                 class="btn btn-primary mt-4 p-2 inline-block bg-green-500 rounded-xl text-white hover:underline">Apply
