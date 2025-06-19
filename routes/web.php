@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\BookStats;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 // Routes for admins
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/adminhome', [AdminController::class, 'home'])->name('adminHome');
-
+    Route::get('/adminIndex', BookStats::class)->name('adminIndex');
     // Category routes (admin only)
     Route::get('/category_add', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/category_add', [CategoryController::class, 'store'])->name('category.store');
@@ -48,3 +49,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/book_rejected/{id}', [BookController::class, 'reject'])->name('book.reject');
     Route::get('/book_return/{id}', [BookController::class, 'return'])->name('book.return');
 });
+
+
+//livewire

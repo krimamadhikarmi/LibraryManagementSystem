@@ -5,13 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @vite('resources/css/app.css')
-    <title>Admin - Book List</title>
+    <title>Admin Home Page</title>
 </head>
 
 <body class="bg-gray-100 text-gray-800">
 
     <x-adminHeader />
 
+    <livewire:book-stats />
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-8 text-center text-blue-700">All Books</h1>
 

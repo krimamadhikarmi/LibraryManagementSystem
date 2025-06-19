@@ -14,7 +14,7 @@
     <x-adminHeader />
 
     <main class="max-w-4xl mx-auto mt-12 px-6 mb-12">
-        <h1 class="text-3xl font-bold mb-6 text-center text-gray-700">Category Management</h1>
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-700">Category</h1>
 
         @if (session()->has('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6" role="alert">

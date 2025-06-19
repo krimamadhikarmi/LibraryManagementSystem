@@ -11,23 +11,7 @@
 
 <body class="bg-gray-100 text-gray-800">
 
-    <x-header>
-        <x-slot:title>
-            Library
-        </x-slot:title>
-        <li><a href="/home" class="text-blue-600 font-semibold">Home</a></li>
-        <li><a href="#" class="hover:text-blue-600">List</a></li>
-        <li><a href="{{ route('book.history') }}" class="hover:text-blue-600">My History</a></li>
-        <li>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"
-                    class="hover:text-blue-600 text-gray-800 bg-transparent border-none p-0 cursor-pointer font-semibold">
-                    Log Out
-                </button>
-            </form>
-        </li>
-    </x-header>
+    <x-userHeader />
 
     <div class="container mx-auto px-4 py-10">
         <h2 class="text-3xl font-bold mb-8 text-center text-blue-700">My Borrow History</h2>
