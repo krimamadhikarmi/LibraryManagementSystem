@@ -17,7 +17,7 @@
             </td>
             <td class="border px-4 py-2">
                 <form method="post"
-                    action="{{ route('category.destroy', ['category' => $categories]) }} class="inline-block"
+                    action="{{ route('category.destroy', ['category' => $categories]) }}" class="inline-block"
                     onsubmit="return confirm('Are you sure you want to delete this category?');">
                     @csrf
                     @method('delete')

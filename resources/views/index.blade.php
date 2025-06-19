@@ -30,7 +30,7 @@
 
 
     </x-header>
-    @include('home.category')
+    {{-- @include('home.category') --}}
     @include('home.book')
 
 </body>

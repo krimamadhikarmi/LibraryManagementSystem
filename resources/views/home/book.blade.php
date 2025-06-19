@@ -7,20 +7,31 @@
                     <span class="font-semibold">Success:</span> {{ session()->get('message') }}
             @endif
         </div>
-        <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+        <div class="flex flex-col md:flex-row justify-center items-center mb-12">
             <div>
-                <div class="w-24 h-1 bg-blue-500 mb-4"></div>
-                <h2 class="text-3xl font-bold"><span class="text-blue-500">Books</span> List.
+
+                <h2 class="text-4xl font-bold"><span class="text-blue-500">Books</span> List
                 </h2>
+
             </div>
 
-            <div>
-                <ul class="flex space-x-6">
-                    <li class="cursor-pointer text-blue-500 font-semibold">All Books</li>
-                    <li class="cursor-pointer hover:text-blue-500">Popular</li>
-                    <li class="cursor-pointer hover:text-blue-500">Latest</li>
-                </ul>
-            </div>
+
+        </div>
+        <div class="m-4">
+            <form method="GET" action="{{ route('userHome') }}">
+                <select name="category_id" class="border-2 border-sky-400 bg-sky-50 px-4 py-2 rounded-lg"
+                    onchange="this.form.submit()">
+                    <option value="">All</option> 
+                    @foreach ($category as $categories)
+                        <option value="{{ $categories->id }}"
+                            {{ request('category_id') == $categories->id ? 'selected' : '' }}>
+                            {{ $categories->category_name }}
+                        </option>
+                    @endforeach
+                </select>
+            </form>
+
+
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             @foreach ($books as $book)
@@ -32,15 +43,21 @@
                         <div class="flex items-center mt-3">
 
                             <h6 class="font-medium">{{ $book->author_name }}</h6>
+
+                        </div>
+                        <div class="flex items-center mt-3">
+
+                            <h6 class="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 ">
+                                {{ $book->category->category_name }}
+                            </h6>
+
                         </div>
                         <div class="border-t mt-4 pt-4 flex justify-between">
-                            
-                                <div>
-                                    <p class="text-gray-500">Available Quantity</p>
-                                    <strong class="text-lg text-green-600">{{ $book->quantity }}</strong>
-                                </div>
-                            
 
+                            <div>
+                                <p class="text-gray-500">Available Quantity</p>
+                                <strong class="text-lg text-green-600">{{ $book->quantity }}</strong>
+                            </div>
                         </div>
                         <a href="" class="mt-4 inline-block text-blue-500 hover:underline">Book
                             Details ></a>

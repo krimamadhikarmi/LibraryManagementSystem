@@ -6,14 +6,13 @@ use App\Http\Requests\BookFormReqValidation;
 use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\Category;
-use Dflydev\DotAccessData\Data;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
     public function index()
     {
+
         $books = Book::all();
         return view('bookIndex', ['books' => $books]);
     }
