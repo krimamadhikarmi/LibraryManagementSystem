@@ -35,7 +35,7 @@
             </button>
         </form>
 
-        @include('category.categoryTable')
+        <livewire:category-table/>
     </main>
 
 </body>
