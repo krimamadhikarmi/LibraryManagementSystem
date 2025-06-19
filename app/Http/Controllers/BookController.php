@@ -73,4 +73,80 @@ class BookController extends Controller
             return redirect()->back()->with('message', 'Book Not Available');
         }
     }
+
+    public function request()
+    {
+
+        $borrow = Borrow::all();
+        return view('bookBorrow', ['borrow' => $borrow]);
+    }
+
+
+    public function approve($id)
+    {
+
+        $borrow = Borrow::find($id);
+        $status = $borrow->status;
+
+        if ($status == 'Approved') {
+            return redirect()->back()->with('message', 'Book is already approved');
+        } else {
+
+
+            $borrow->status = 'Approved';
+            $borrow->save();
+
+            $bookid = $borrow->book_id;
+
+            $book = Book::find($bookid);
+
+            $book_qty = $book->quantity - '1';
+
+            $book->quantity = $book_qty;
+
+            $book->save();
+            return redirect()->back()->with('success', 'Book Request Approved');
+        }
+    }
+
+    public function reject($id)
+    {
+
+        $borrow = Borrow::find($id);
+        $borrow->status = 'Rejected';
+        $borrow->save();
+        return redirect()->back()->with('success', 'Book Request Rejected');
+    }
+
+    public function return($id)
+    {
+
+        $borrow = Borrow::find($id);
+        $status = $borrow->status;
+
+        if ($status == 'Returned') {
+            return redirect()->back()->with('message', 'Book is already Returned');
+        } else {
+
+
+            $borrow->status = 'Returned';
+            $borrow->save();
+
+            $bookid = $borrow->book_id;
+
+            $book = Book::find($bookid);
+
+            $book_qty = $book->quantity + '1';
+
+            $book->quantity = $book_qty;
+
+            $book->save();
+            return redirect()->back()->with('success', 'Book Returned');
+        }
+
+
+
+
+        return redirect()->back()->with('success', 'Book Returned');
+    }
 }

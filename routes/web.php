@@ -23,7 +23,7 @@ Route::match(['GET', 'POST'], '/logout', [AuthController::class, 'logout'])->nam
 // Routes for users
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('userHome');
-    Route::get('/book_borrow/{book}',[BookController::class,'book_borrow'])->name('book.borrow');
+    Route::get('/book_borrow/{book}', [BookController::class, 'book_borrow'])->name('book.borrow');
 });
 
 // Routes for admins
@@ -42,4 +42,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/book', [BookController::class, 'store'])->name('book.store');
     Route::get('/book_create', [BookController::class, 'create'])->name('book.create');
     Route::delete('/book/{book}/delete', [BookController::class, 'destroy'])->name('book.destroy');
+    Route::get('/book_request', [BookController::class, 'request'])->name('book.request');
+    Route::get('/book_approve/{id}', [BookController::class, 'approve'])->name('book.approve');
+    Route::get('/book_rejected/{id}', [BookController::class, 'reject'])->name('book.reject');
+    Route::get('/book_return/{id}', [BookController::class, 'return'])->name('book.return');
 });
