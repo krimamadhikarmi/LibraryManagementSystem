@@ -22,7 +22,6 @@
             </div>
         @endif
 
-        <!-- Form Section -->
         <form method="POST" action="{{ route('category.store') }}" class="bg-white shadow-md rounded-lg p-6 mb-10">
             @csrf
             <div class="mb-4">
@@ -36,7 +35,6 @@
             </button>
         </form>
 
-        <!-- Category Table Include -->
         @include('category.categoryTable')
     </main>
 

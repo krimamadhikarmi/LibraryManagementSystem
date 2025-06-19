@@ -13,7 +13,6 @@
     <x-adminHeader />
 
     <div class="max-w-7xl mx-auto px-4 py-10">
-        <!-- Title and Add Button -->
         <div class="flex justify-between items-center mb-8">
             <h1 class="text-4xl font-bold">Books</h1>
             <a href="{{ route('book.create') }}"
@@ -24,11 +23,10 @@
 
         @if (session()->has('success'))
             <div class="bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded mb-6">
-                ✅ <span class="font-semibold">Success:</span> {{ session('success') }}
+                 <span class="font-semibold">Success:</span> {{ session('success') }}
             </div>
         @endif
 
-        <!-- Table -->
         <div class="bg-white shadow-md rounded-lg overflow-x-auto">
             <table class="min-w-full text-sm text-left">
                 <thead class="bg-gray-100 text-gray-700 uppercase text-xs font-semibold">

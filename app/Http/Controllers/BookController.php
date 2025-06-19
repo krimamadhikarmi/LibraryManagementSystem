@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookFormReqValidation;
 use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\Category;
@@ -23,25 +24,17 @@ class BookController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(BookFormReqValidation $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'author_name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
-            'quantity' => 'required',
-            'book_img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
 
+        $validated = $request->validated();
         // Handle image upload
         if ($request->hasFile('book_img')) {
             $imagePath = $request->file('book_img')->store('book_images', 'public');
-            $data['book_img'] = $imagePath;
+            $validated['book_img'] = $imagePath;
         }
 
-        Book::create($data);
+        Book::create($validated);
 
         return redirect()->route('book.index')->with('success', 'Book created successfully');
     }
@@ -143,10 +136,5 @@ class BookController extends Controller
             $book->save();
             return redirect()->back()->with('success', 'Book Returned');
         }
-
-
-
-
-        return redirect()->back()->with('success', 'Book Returned');
     }
 }

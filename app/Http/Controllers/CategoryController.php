@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryFormReqValidation;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -19,13 +20,11 @@ class CategoryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CategoryFormReqValidation $request)
     {
-        $data = $request->validate([
-            'category_name' => 'required',
-        ]);
+        $validated = $request->validated();
 
-        Category::create($data);
+        Category::create($validated);
 
         return redirect()->back()->with('success', 'Category added successfully!');
     }
@@ -35,12 +34,11 @@ class CategoryController extends Controller
         return view('categoryUpdate', ['category' => $category]);
     }
 
-    public function update(Request $request, Category $category)
+    public function update(CategoryFormReqValidation $request, Category $category)
     {
-        $data = $request->validate([
-            'category_name' => 'required',
-        ]);
-        $category->update($data);
+        $validated = $request->validated();
+
+        $category->update($validated);
         return redirect(route('category.store'))->with('success', 'Category Updated');
     }
 
