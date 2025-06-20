@@ -43,6 +43,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/book', [BookController::class, 'index'])->name('book.index');
     Route::post('/book', [BookController::class, 'store'])->name('book.store');
     Route::get('/book_create', [BookController::class, 'create'])->name('book.create');
+    Route::get('/book_edit/{bid}/edit', [BookController::class, 'edit'])->name('book.edit');
+    Route::put('/book/{book}/update', [BookController::class, 'update'])->name('book.update');
+
     Route::delete('/book/{book}/delete', [BookController::class, 'destroy'])->name('book.destroy');
     Route::get('/book_request', [BookController::class, 'request'])->name('book.request');
     Route::get('/book_approve/{id}', [BookController::class, 'approve'])->name('book.approve');

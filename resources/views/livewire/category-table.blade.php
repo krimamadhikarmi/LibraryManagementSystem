@@ -16,7 +16,7 @@
                     <td class="px-6 py-4 space-x-2">
                         <a class="text-blue-500 hover:underline"
                             href="{{ route('category.edit', ['category' => $categories->id]) }}">Edit</a>
-                    </td>
+                    </td> 
                     <td class=" px-4 py-2">
                         <form method="post" action="{{ route('category.destroy', ['category' => $categories]) }}"
                             class="inline-block"

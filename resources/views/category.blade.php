@@ -22,20 +22,24 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('category.store') }}" class="bg-white shadow-md rounded-lg p-6 mb-10">
-            @csrf
-            <div class="mb-4">
-                <label for="category_name" class="block text-sm font-medium text-gray-700 mb-1">Category Name</label>
-                <input type="text" id="category_name" name="category_name" placeholder="Enter the category..."
-                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-            </div>
-            <button type="submit"
-                class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                Submit
-            </button>
-        </form>
+        <div>
+            <form method="POST" action="{{ route('category.store') }}" class="bg-white shadow-md rounded-lg p-6 mb-10">
+                @csrf
+                <div class="mb-4">
+                    <label for="category_name" class="block text-sm font-medium text-gray-700 mb-1">Category
+                        Name</label>
+                    <input type="text" id="category_name" name="category_name" placeholder="Enter the category..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                </div>
+                <button type="submit"
+                    class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                    Submit
+                </button>
+            </form>
+        </div>
 
-        <livewire:category-table/>
+
+        <livewire:category-table />
     </main>
 
 </body>

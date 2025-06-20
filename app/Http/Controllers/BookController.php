@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Requests\BookFormReqValidation;
 use App\Models\Book;
 use App\Models\Borrow;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
@@ -21,6 +24,34 @@ class BookController extends Controller
         $category = Category::all();
         return view('BookCreate', ['category' => $category]);
     }
+
+    public function edit($bid)
+    {
+        $books = Book::find($bid);
+        $category = Category::all();
+        return view('editBook', ['books' => $books, 'category' => $category]);
+    }
+
+
+    public function update(BookFormReqValidation $request, Book $book)
+    {
+        $validated = $request->validated();
+
+        if ($request->hasFile('book_img')) {
+            if ($book->book_img && Storage::exists('public/' . $book->book_img)) {
+                Storage::delete('public/' . $book->book_img);
+            }
+
+            $imagePath = $request->file('book_img')->store('book_images', 'public');
+            $validated['book_img'] = $imagePath;
+        }
+
+        $book->update($validated);
+
+
+        return redirect(route('book.index'))->with('success', 'Book Updated');
+    }
+
 
 
     public function store(BookFormReqValidation $request)

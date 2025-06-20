@@ -28,7 +28,7 @@
                         <td class="px-6 py-4">{{ $book->category->category_name }}</td>
                         <td class="px-6 py-4">{{ $book->quantity }}</td>
                         <td class="px-6 py-4">
-                            <a href="#" class="text-blue-600 hover:underline font-semibold">Edit</a>
+                            <a href="{{route('book.edit',$book->id)}}" class="text-blue-600 hover:underline font-semibold">Edit</a>
                         </td>
                         <td class="px-6 py-4">
                             <form method="POST" action="{{ route('book.destroy', $book) }}"
