@@ -58,7 +58,6 @@ class BookController extends Controller
     {
 
         $validated = $request->validated();
-        // Handle image upload
         if ($request->hasFile('book_img')) {
             $imagePath = $request->file('book_img')->store('book_images', 'public');
             $validated['book_img'] = $imagePath;
