@@ -7,7 +7,6 @@ use Livewire\Component;
 
 class CategoryCreate extends Component
 {
-
     public $category_name;
     public function store()
     {
@@ -19,7 +18,7 @@ class CategoryCreate extends Component
             'category_name' => $this->category_name,
         ]);
 
-        
+
         return redirect()->route('admin.category')->with('success', 'Category added successfully!');
     }
 

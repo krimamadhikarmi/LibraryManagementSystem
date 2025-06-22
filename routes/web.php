@@ -71,4 +71,4 @@ Route::get('/categoryUpdate/{id}', CategoryUpdate::class)->name('admin.category.
 
 Route::get('/borrowlist', BookBorrowList::class)->name('admin.book.borrow');
 
-Route::get('/userDisplay', UserDisplay::class)->name('user.book.display');
+// Route::get('/userDisplay', UserDisplay::class)->name('user.book.display');
