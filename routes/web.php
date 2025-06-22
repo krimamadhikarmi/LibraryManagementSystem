@@ -6,7 +6,15 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\Book\BookBorrowList;
+use App\Livewire\Book\UserDisplay;
 use App\Livewire\BookStats;
+use App\Livewire\Category\CategoryCreate;
+use App\Livewire\Category\CategoryDisplay;
+use App\Livewire\Category\CategoryDisplayTable;
+use App\Livewire\Category\CategoryTable;
+use App\Livewire\Category\CategoryUpdate;
+use App\Livewire\CategoryCrud;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -55,3 +63,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 //livewire
+// Route::get('/adminCategory', CategoryCrud::class)->name('admin.category');
+Route::get('/adminCategory', CategoryDisplay::class)->name('admin.category');
+Route::get('/categorycreate', CategoryCreate::class)->name('admin.category.create');
+Route::get('/categorytable', CategoryTable::class)->name('admin.category.table');
+Route::get('/categoryUpdate/{id}', CategoryUpdate::class)->name('admin.category.update');
+
+Route::get('/borrowlist', BookBorrowList::class)->name('admin.book.borrow');
+
+Route::get('/userDisplay', UserDisplay::class)->name('user.book.display');
