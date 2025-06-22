@@ -49,8 +49,8 @@
                                     class="px-3 py-1 rounded-full text-sm font-medium 
                                     {{ $dt->status === 'Approved'
                                         ? 'bg-green-100 text-green-800'
-                                        : ($dt->status === 'Pending'
-                                            ? 'bg-yellow-100 text-yellow-800'
+                                        : ($dt->status === 'Returned'
+                                            ? 'bg-yellow-100 text-yellow-700'
                                             : 'bg-red-100 text-red-800') }}">
                                     {{ $dt->status }}
                                 </span>

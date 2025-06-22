@@ -11,7 +11,7 @@ class BookDisplay extends Component
     public function render()
     {
         return view('livewire.book-display')->with([
-            'books' => Book::paginate(5)
+            'books' => Book::paginate(8)
         ]);
     }
 }
