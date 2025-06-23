@@ -10,6 +10,9 @@ class CategoryTable extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['categoryAdded' => '$refresh'];
+
+
     public function delete($id)
     {
 

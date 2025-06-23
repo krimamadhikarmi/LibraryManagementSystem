@@ -8,6 +8,14 @@ use Livewire\Component;
 class CategoryCreate extends Component
 {
     public $category_name;
+    public $showModal = false;
+
+    protected $listeners = ['showcreatemodal' => 'openModal'];
+
+    public function openModal()
+    {
+        $this->showModal = true;
+    }
     public function store()
     {
         $this->validate([
@@ -18,8 +26,9 @@ class CategoryCreate extends Component
             'category_name' => $this->category_name,
         ]);
 
-
-        return redirect()->route('admin.category')->with('success', 'Category added successfully!');
+        $this->dispatch('categoryAdded');
+        $this->reset(['category_name', 'showModal']);
+        session()->flash('success', 'Category added successfully!');
     }
 
     public function render()

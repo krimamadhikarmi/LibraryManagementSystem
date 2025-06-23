@@ -15,7 +15,7 @@
                     <td class=" px-6  py-2">{{ $categories->category_name }}</td>
                     <td class="px-6 py-4 space-x-2">
                         <a class="text-blue-500 hover:underline"
-                            href="{{ route('admin.category.update', ['id' => $categories->id]) }}">>Edit</a>
+                            href="{{ route('admin.category.update', ['id' => $categories->id]) }}">Edit</a>
                     </td>
                     <td class=" px-4 py-2">
                         <button wire:click="delete({{ $categories->id }})"

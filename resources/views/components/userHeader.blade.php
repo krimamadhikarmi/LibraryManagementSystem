@@ -2,9 +2,9 @@
     <x-slot:title>
         Library
     </x-slot:title>
-    <li><a href="/home" class="text-blue-500 font-semibold">Home</a></li>
+    <li><a href="/home" wire:navigate>Home</a></li>
 
-    <li><a href="{{ route('book.history') }}" class="hover:text-blue-500">My History</a></li>
+    <li><a href="/bookhistory" class="hover:text-blue-500" wire:navigate>My History</a></li>
     <li>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
