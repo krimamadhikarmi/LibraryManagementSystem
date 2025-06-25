@@ -22,7 +22,7 @@ class AuthController extends Controller
             if ($user->role === 'admin') {
                 return redirect()->route('adminHome');
             } elseif ($user->role === 'user') {
-                return redirect()->route('userHome');
+                return redirect()->route('home');
             }
         }
 
@@ -35,6 +35,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('home');
     }
 }

@@ -9,6 +9,7 @@ use Livewire\Component;
 class CategoryTable extends Component
 {
     use WithPagination;
+    
 
     protected $listeners = ['categoryAdded' => '$refresh'];
 

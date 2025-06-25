@@ -22,6 +22,11 @@
                 <span class="font-semibold">Success:</span> {{ session()->get('success') }}
             </div>
         @endif
+         @if (session()->has('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+                <span class="font-semibold">Alert:</span> {{ session()->get('error') }}
+            </div>
+        @endif
         @if ($books->isEmpty())
             <div class="m-4">
                 {{-- <select wire:model="selectedCategory"name="category_id"
@@ -99,12 +104,19 @@
                             </div>
                             {{-- <a href="" class="mt-4 inline-block text-blue-500 hover:underline">Book
                                 Details ></a> --}}
-                            <div>
-                                <button wire:click="apply({{ $book->id }})"
-                                    class="btn btn-primary mt-4 p-2 inline-block bg-green-500 rounded-xl text-white hover:underline">Apply
-                                    to
-                                    borrow</button>
-                            </div>
+                            @auth
+                                <div>
+                                    <button wire:click="apply({{ $book->id }})"
+                                        class="btn btn-primary mt-4 p-2 inline-block bg-green-500 rounded-xl text-white hover:bg-green-600 transition-colors">
+                                        Apply to borrow
+                                    </button>
+                                </div>
+                            @else
+                                <a href="{{ route('login') }}"
+                                    class="bg-blue-600 text-white px-4 py-2 mt-4 rounded inline-block hover:bg-blue-700 transition-colors">
+                                    Apply for book
+                                </a>
+                            @endauth
                         </div>
                     </div>
                 @endforeach

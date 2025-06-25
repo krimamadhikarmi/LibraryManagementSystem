@@ -19,9 +19,8 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 // Public routes
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('userHome');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post')->middleware('guest');
@@ -29,9 +28,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post')->mid
 // Logout route (available to authenticated users)
 Route::match(['GET', 'POST'], '/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
+
 // Routes for users
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('userHome');
+    // Route::get('/home', [HomeController::class, 'index'])->name('userHome');
     Route::get('/book_borrow/{book}', [BookController::class, 'book_borrow'])->name('book.borrow');
     Route::get('/bookhistory', [HomeController::class, 'history'])->name('book.history');
 });
